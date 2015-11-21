@@ -1,0 +1,46 @@
+﻿@model MVCCodeFirst.Models.Afet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Afet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SeriNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeriNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaslangicTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaslangicTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BitisTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BitisTarih)
+        </dd>
+
+    </dl>
+</div>
+<div>
+@Html.Partial("AfetResimList", Model)
+@Html.Partial("UploadResim",Model)
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

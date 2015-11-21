@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVCCodeFirst.Models.Afet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SeriNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaslangicTarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BitisTarih)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeriNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaslangicTarih)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BitisTarih)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+           @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

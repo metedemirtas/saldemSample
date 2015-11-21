@@ -1,0 +1,58 @@
+﻿@model MVCCodeFirst.Models.Afet
+<div id="AfetResimContainer">
+    <script type="text/javascript">
+
+        function RefreshView(){
+            $.ajax({
+                type: 'GET',
+                url: "/AfetResim/LoadAfetResimView/",
+                data : {'id': @Model.Id },
+                dataType: 'html', //dataType - html
+                success:function(result)
+                {
+                    $('#AfetResimContainer').html(result);
+                },
+                error: function (error) {
+
+                }
+            });
+        }
+
+        function ResimSil(id) {
+            $.ajax({
+                url: '@Url.Action("DeleteResim", "AfetResim")',
+                type: 'POST',
+                data: { 'id': id },
+                dataType: 'json',
+                success: function (response) {
+                    RefreshView();
+                },
+                error: function (error) {
+
+                }
+            })
+        };
+    </script>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-12" style="background-color:green;color:white">
+                <center>RESİMLER</center>
+            </div>
+            <br />
+
+            @foreach (var resim in Model.AfetResim)
+            {
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <img src="@(Url.Action("GetThumnail","AfetResim") + "/" + resim.Id)" style="width:50px;height:50px;" />
+                    </div>
+                    <div class="col-md-9">
+                        <a href="#" onclick="ResimSil(@resim.Id);">Sil</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
